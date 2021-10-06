@@ -19,8 +19,7 @@ class PaymentController extends Controller
         $record = Records::all();
 
         $payment = Payment::all();
-        return view('payment.index')->with( array('records' => $record,'payments'=>$payment ));
-
+        return view('payment.index')->with(array('records' => $record, 'payments' => $payment));
     }
 
     /**

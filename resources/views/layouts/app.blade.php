@@ -108,6 +108,7 @@
         </main>
     </div>
 </body>
+
 <script>
     const bytitle = () => {
         console.log(document.getElementById('s_title').value);
