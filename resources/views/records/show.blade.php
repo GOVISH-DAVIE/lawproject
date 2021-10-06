@@ -16,8 +16,9 @@
                         <div>
                             <H4>Documents</H4>
                             @foreach (json_decode($record->docs) as $doc)
-                                <a href="/storage/{{ $doc }}" target="_blank" class="card-link">download</a>
+                                <a href="/storage/{{ $doc }}" target="_blank" class="card-link">{{$doc}}</a>
                             @endforeach
+                            <hr>
                         </div>
                         <br>
                         <p class="card-text">

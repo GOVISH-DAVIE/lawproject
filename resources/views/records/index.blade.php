@@ -21,7 +21,7 @@
                             </p>
                             <p class="card-text">
                             </p>
-                            <a href="records/{{ $record->id }}" class="btn btn-primary">View All</a>
+                            <a href="/records/{{ $record->id }}" class="btn btn-primary">View All</a>
                         </div>
                     </div>
                 @endforeach
@@ -29,7 +29,7 @@
 
             </div>
             <div class="col-md-4">
-                attributes
+Search
 
                 <div class="card">
                     <br>
@@ -38,16 +38,12 @@
                             <label for="exampleFormControlInput1" class="form-label">Search By Title</label>
                             <input type="text" class="form-control" onkeyup="bytitle()" id="s_title" name="tel">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Search By Client name</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="tel">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Search By Location</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="tel">
-                        </div>
+                         
                     </div>
                 </div>
+
+                <div class="card" id="search"></div>
+              
             </div>
         </div>
     </div>

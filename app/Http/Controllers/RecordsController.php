@@ -44,7 +44,7 @@ class RecordsController extends Controller
                 return $_FILES['files']['error'];
             } else {
                 foreach ($_FILES['files']['name'] as $file => $value) {
-                    $filename =  STR::random(10) . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION);
+                    $filename =  $_FILES['files']['name'][$file] . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION);
                     Storage::putFileAs('public/', new File($_FILES["files"]["tmp_name"][$file]), $filename);
                     array_push($images,  $filename);
                 }

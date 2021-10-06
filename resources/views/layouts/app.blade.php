@@ -69,7 +69,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                 document.getElementById('logout-form').submit();">
+                                                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -109,17 +109,34 @@
         let fd = {
             data: document.getElementById('s_title').value
         }
-        document.getElementById('s_title').value == '' ? null :
-            fetch(`/api/search/title/${document.getElementById('s_title').value}`, {
-                method: 'GET', // or 'PUT'
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-            })
-            .then(res => res.text())
+        document.getElementById('s_title').value == '' ? document.getElementById('search').innerHTML = '' :
+            fetch(`/api/search/title/${document.getElementById('s_title').value}`)
+            .then(res => res.json())
             .then((res) => {
                 console.log(res)
+                let s = ' <div class="container"  >'
+                res.forEach(element => {
+                    s = s + ` <div class="card" style="margin-top: 20px;margin-bottom: 20px">
+                        <div class="card-header">
+                            <h5><b><u>Case Title: </u></b>  ${element.title }</h5>
+                            <b><u>Case Location: </u></b> ${ element.location }
+                            <b><u>Case Date: </u></b> ${ element.date }
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                <b>Client Name: ${ element.clientname } </b><br>
+
+                            <p class="card-text">
+                                ${ element.des }.
+                            </p>
+                            <p class="card-text">
+                            </p>
+                            <a href="/records/${ element.id }" class="btn btn-primary">View All</a>
+                        </div>
+                    </div>`
+
+                });
+                document.getElementById('search').innerHTML = s+'</div>'
             })
             .catch(err => {
                 console.error(err)

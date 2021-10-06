@@ -11,9 +11,10 @@ class SearchController extends Controller
     public function title($data)
     {
       $s =   Records::query()
-            ->where('clientname', 'LIKE', "%{$data}%")
-            ->where('title', 'LIKE', "%{$data}%")
-            ->orWhere('email', 'LIKE', "%{$data}%")
+            ->where('clientname', 'like', "%{$data}%")
+            ->orWhere('location', 'like', "%{$data}%")
+            ->orWhere('title', 'like', "%{$data}%")
+            ->orWhere('email', 'like', "%{$data}%")
             ->get();
             return $s;
     }
