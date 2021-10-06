@@ -30,11 +30,31 @@
                     </div>
                 </div>
 
+                <br>
+                <div class="card shadow">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item active" aria-current="true">Payment History</li>
+                      
+                        @foreach ($record->payments as $item) 
+                        <li class="list-group-item">KES {{$item->amount}}
+                            <h6 class="card-subtitle mb-2 text-muted">paid on: {{ $item->created_at }}</h6>
+                      
+                        </li>
+                        @endforeach 
+                        
+                        <li class="list-group-item active" aria-current="true">
+                            <h4>Total: {{$record->payments->sum('amount')}}</h4>
+                        </li>
+                      
+                    </ul>
+                </div>
             </div>
 
 
-            <div class="col-sm-4">
-                <div class="card">
+            <div class="col-md-4">
+                <div class="card shadow">
                     <div class="card-body">
                         <h3 class="card-title">{{ $record->clientname }}</h3>
                         <h3 class="card-title"> {{ $record->tel }}</h3>
@@ -46,7 +66,7 @@
                 </div>
                 <div class="card" style="margin-top: 20px">
                     <div class="card-body">
-                    <p> <b>Receivable:</b>   {{$record->amount}}</p>
+                        <p> <b>Receivable:</b> {{ $record->amount }}</p>
                         <form action="/payment" method="POST">
                             @csrf
                             <div class="mb-3">

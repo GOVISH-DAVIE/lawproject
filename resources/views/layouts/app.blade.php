@@ -44,6 +44,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                            <a class="nav-link" href="/home">{{ __('Home') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/records">{{ __('Records') }}</a>
                         </li>
                         <li class="nav-item">
@@ -130,7 +133,7 @@
                                 <b>Client Name: ${ element.clientname } </b><br>
 
                             <p class="card-text">
-                                ${ element.des }.
+                               KES ${ element.amount }.
                             </p>
                             <p class="card-text">
                             </p>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
+use App\Models\Records;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -14,7 +16,11 @@ class PaymentController extends Controller
     public function index()
     {
         //
-        
+        $record = Records::all();
+
+        $payment = Payment::all();
+        return view('payment.index')->with( array('records' => $record,'payments'=>$payment ));
+
     }
 
     /**
@@ -36,6 +42,11 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+        $payment = Payment::create([
+            'record_id' => $request->record,
+            'amount' => $request->amount
+        ]);
+        return redirect()->back()->with(['success' => 'Payment Recorded Succesfully']);;
     }
 
     /**

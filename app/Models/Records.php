@@ -20,4 +20,9 @@ class Records extends Model
         'user_id',
         'clientname'
     ];
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'record_id', 'id');
+        # code...
+    }
 }

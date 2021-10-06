@@ -17,7 +17,7 @@
                                 <b>Client Name: {{ $record->clientname }} </b><br>
 
                             <p class="card-text">
-                                {{ $record->des }}.
+                             KES   {{ $record->amount }}.
                             </p>
                             <p class="card-text">
                             </p>
@@ -29,7 +29,7 @@
 
             </div>
             <div class="col-md-4">
-Search
+                Search
 
                 <div class="card">
                     <br>
@@ -38,12 +38,12 @@ Search
                             <label for="exampleFormControlInput1" class="form-label">Search By Title</label>
                             <input type="text" class="form-control" onkeyup="bytitle()" id="s_title" name="tel">
                         </div>
-                         
+
                     </div>
                 </div>
 
                 <div class="card" id="search"></div>
-              
+
             </div>
         </div>
     </div>
