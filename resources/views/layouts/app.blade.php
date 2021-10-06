@@ -23,10 +23,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('/') }}"> 
+                    <img src="/d.png" height="60" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -107,8 +107,9 @@
             @yield('content')
         </main>
     </div>
-    <footer style="text-align: center">
-        <h6> © 2021 Copyright: 9davidmuia@gmail.com</h6>
+    <footer class="alert alert-danger" style="text-align: center">
+        <hr>
+        <img src="/d.png" height="40" alt=""><h6> © 2021 Copyright: 9davidmuia@gmail.com</h6>
     </footer>
 </body>
 
