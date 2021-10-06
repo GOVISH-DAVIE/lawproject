@@ -21,7 +21,7 @@ class PaymentController extends Controller
         $today =  (new Carbon)->addDays(1)->startOfDay()->toDateString();
         //
         $record = Records::all();
-        $closed = Records::where('closed', 'closed')->get();
+        $closed = Records::where('closed', 'close')->get();
         $payment = Payment::all();
         $paymentLest30 = Payment::whereBetween('created_at', [$th30 . " 00:00:00", $today . " 00:00:00"])->get();
 
