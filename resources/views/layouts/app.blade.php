@@ -67,8 +67,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -101,5 +102,29 @@
         </main>
     </div>
 </body>
+<script>
+    const bytitle = () => {
+        console.log(document.getElementById('s_title').value);
+
+        let fd = {
+            data: document.getElementById('s_title').value
+        }
+        document.getElementById('s_title').value == '' ? null :
+            fetch(`/api/search/title/${document.getElementById('s_title').value}`, {
+                method: 'GET', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+            })
+            .then(res => res.text())
+            .then((res) => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+</script>
 
 </html>
