@@ -110,8 +110,8 @@ class PaymentController extends Controller
         $closed = Records::where('closed', 'closed')->get();
         $payment = Payment::all();
         $paymentLest30 = Payment::whereBetween('created_at', [$th30 . " 00:00:00", $today . " 00:00:00"])->get();
-$days = ['start' => $request->start, 'end' => $request->to];
-        return view('payment.search')->with(array('records' => $record, 'closed' => $closed, 'paymentLest30' => $paymentLest30, 'payments' => $payment, 'days' =>$days));
+        $days = ['start' => $request->start, 'end' => $request->to];
+        return view('payment.search')->with(array('records' => $record, 'closed' => $closed, 'paymentLest30' => $paymentLest30, 'payments' => $payment, 'days' => $days));
         //
     }
 }

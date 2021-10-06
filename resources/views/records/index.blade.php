@@ -21,7 +21,7 @@
                             </p>
                             <p class="card-text">
                             </p>
-                            <a href="/records/{{ $record->id }}" class="btn btn-primary">View All</a>
+                            <a href="/records/{{ $record->id }}" class="btn btn-primary">View </a>
                         </div>
                     </div>
                 @endforeach

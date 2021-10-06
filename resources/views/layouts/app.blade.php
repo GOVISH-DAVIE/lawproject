@@ -107,6 +107,9 @@
             @yield('content')
         </main>
     </div>
+    <footer style="text-align: center">
+        <h6> © 2021 Copyright: 9davidmuia@gmail.com</h6>
+    </footer>
 </body>
 
 <script>
