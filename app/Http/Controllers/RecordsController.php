@@ -148,4 +148,13 @@ class RecordsController extends Controller
     {
         //
     }
+    public function close($id)
+    {
+        $id = Records::find($id);
+        $id->closed= 'close';
+        $id->save();
+        return redirect()->back()->with(['success' => 'Case Closed Succesfully']);;
+   
+        # code...
+    }
 }

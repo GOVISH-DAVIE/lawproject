@@ -26,5 +26,6 @@ Auth::routes();
 Route::resource('records', RecordsController::class);
 Route::resource('payment', PaymentController::class);
 Route::post('paymentSearch', [PaymentController::class, 'search']);
+Route::get('recordsclose/{id}', [RecordsController::class, 'close']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::post('/search/title', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

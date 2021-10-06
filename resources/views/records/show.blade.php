@@ -6,6 +6,12 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
+                @if ($record->closed == 'close')
+                    <div class="alert alert-warning" role="alert">
+                        Case Closed
+                    </div>
+
+                @endif
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">{{ $record->title }}</h3>
@@ -27,7 +33,13 @@
                         </p>
                         <a href="#" class="btn btn btn-outline-secondary btn-lg">Delete</a>
                         <a href="/records/{{ $record->id }}/edit" class="btn btn btn-outline-secondary btn-lg">Edit</a>
+                        @if ($record->closed !== 'close')
+                            <a href="/recordsclose/{{ $record->id }}" class="btn btn btn-outline-secondary btn-lg">Close
+                                Case</a>
                     </div>
+
+                    @endif
+
                 </div>
 
                 <br>
@@ -36,18 +48,18 @@
                     <ul class="list-group">
 
                         <li class="list-group-item active" aria-current="true">Payment History</li>
-                      
-                        @foreach ($record->payments as $item) 
-                        <li class="list-group-item">KES {{$item->amount}}
-                            <h6 class="card-subtitle mb-2 text-muted">paid on: {{ $item->created_at }}</h6>
-                      
-                        </li>
-                        @endforeach 
-                        
+
+                        @foreach ($record->payments as $item)
+                            <li class="list-group-item">KES {{ $item->amount }}
+                                <h6 class="card-subtitle mb-2 text-muted">paid on: {{ $item->created_at }}</h6>
+
+                            </li>
+                        @endforeach
+
                         <li class="list-group-item active" aria-current="true">
-                            <h4>Total: {{$record->payments->sum('amount')}}</h4>
+                            <h4>Total: {{ $record->payments->sum('amount') }}</h4>
                         </li>
-                      
+
                     </ul>
                 </div>
             </div>
@@ -68,8 +80,8 @@
                 <div class="card alert alert-secondary   " style="margin-top: 20px">
                     <div class="card-body">
                         <p> <b>Receivable:</b> {{ $record->amount }}</p>
-                        <p> <b>Paid:</b> {{ ($record->payments->sum('amount')) }}</p>
-                        <p> <b>balance:</b> {{intval($record->amount) - intval($record->payments->sum('amount')) }}</p>
+                        <p> <b>Paid:</b> {{ $record->payments->sum('amount') }}</p>
+                        <p> <b>balance:</b> {{ intval($record->amount) - intval($record->payments->sum('amount')) }}</p>
                         <form action="/payment" method="POST">
                             @csrf
                             <div class="mb-3">
