@@ -24,7 +24,7 @@
                             {{ $record->des }}
                         </p>
                         <a href="#" class="btn btn btn-outline-secondary btn-lg">Delete</a>
-                        <a href="#" class="btn btn btn-outline-secondary btn-lg">Edit</a>
+                        <a href="/records/{{$record->id}}/edit" class="btn btn btn-outline-secondary btn-lg">Edit</a>
                     </div>
                 </div> 
 

@@ -108,6 +108,8 @@ class RecordsController extends Controller
     public function edit($id)
     {
         //
+        $record = Records::find($id);
+        return view('records.edit')->with('record', $record);
     }
 
     /**
@@ -119,7 +121,21 @@ class RecordsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
+        $record = Records::find($id);
+        $record->title = $request->title;
+        $record->date = $request->date;
+        $record->location = $request->location;
+        $record->amount = $request->amount;
+        $record->des = $request->dec;
+        $record->email = $request->email;
+        $record->tel = $request->tel;
+        $record->clientname = $request->name;
+        $record->docs = $this->uploadImages();
+        $record->user_id = auth()->user()->id;
+        $record->save();
+        return redirect('records/'.$record->id)->with(['success' => 'Updated Succesfully']);;
+  
     }
 
     /**
