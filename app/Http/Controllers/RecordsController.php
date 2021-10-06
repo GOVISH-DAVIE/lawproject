@@ -18,10 +18,8 @@ class RecordsController extends Controller
     public function index()
     {
         //
-        $records = Records:: paginate(20);
+        $records = Records::paginate(20);
         return view('records.index')->with('records', $records);
-
-
     }
 
     /**
@@ -46,9 +44,9 @@ class RecordsController extends Controller
                 return $_FILES['files']['error'];
             } else {
                 foreach ($_FILES['files']['name'] as $file => $value) {
-
-                    Storage::putFileAs('public/', new File($_FILES["files"]["tmp_name"][$file]),  STR::random(10) . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION));
-                    array_push($images, STR::random(10) . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION));
+                    $filename =  STR::random(10) . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION);
+                    Storage::putFileAs('public/', new File($_FILES["files"]["tmp_name"][$file]), $filename);
+                    array_push($images,  $filename);
                 }
                 return json_encode($images);
             }
@@ -79,11 +77,12 @@ class RecordsController extends Controller
                 'des' => $request->dec,
                 'email' => $request->email,
                 'tel' => $request->tel,
-                'name' => $request->name,
+                'clientname' => $request->name,
                 'docs' => $this->uploadImages(),
                 'user_id' => auth()->user()->id,
-            
-        ]);
+
+            ]
+        );
         return redirect()->back()->with(['success' => 'Created Succesfully']);;
     }
 
@@ -96,6 +95,8 @@ class RecordsController extends Controller
     public function show($id)
     {
         //
+        $record = Records::find($id);
+        return view('records.show')->with('record', $record);
     }
 
     /**

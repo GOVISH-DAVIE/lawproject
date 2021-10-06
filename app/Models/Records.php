@@ -18,6 +18,6 @@ class Records extends Model
         'tel',
         'docs',
         'user_id',
-        'name'
+        'clientname'
     ];
 }

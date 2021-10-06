@@ -14,7 +14,7 @@
                         </div>
                         <div class="card-body"> 
                             <p> 
-                               <b>Client Name: {{$record->name}} </b><br>
+                               <b>Client Name: {{$record->clientname    }} </b><br>
                                 
                             <p class="card-text">
                                 {{$record->des}}.
