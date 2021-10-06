@@ -10,8 +10,8 @@
                     <div class="card-body">
 
                         <div class="alert alert-success" role="alert">
-                            <form action="recods" method="POST" enctype="multipart/form-data">
-                                {{ @csrf }}
+                            <form action="records" method="POST" enctype="multipart/form-data">
+                            @csrf
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label"> Title </label>
                                     <input type="text" class="form-control" name="title" id="exampleFormControlInput1"
@@ -36,8 +36,11 @@
                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="dec" rows="3"></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Client Email
-                                        Address</label>
+                                    <label for="exampleFormControlInput1" class="form-label">Client Name</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Client Email  Address</label>
                                     <input type="email" class="form-control" id="exampleFormControlInput1" name="email"
                                         placeholder="name@example.com">
                                 </div>
@@ -49,10 +52,10 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Scanned Files</label>
-                                    <input type="file" name="files[]" class="form-control" id="exampleFormControlInput1"
+                                    <input type="file" name="files[]" multiple class="form-control" id="exampleFormControlInput1"
                                         >
                                 </div>
-                                <button class="btn btn btn-outline-secondary btn-lg"> Create Entry</button>
+                                <button type="submit" class="btn btn btn-outline-secondary btn-lg"> Create Entry</button>
                             </form>
                         </div>
                     </div>

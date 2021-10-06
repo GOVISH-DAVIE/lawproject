@@ -16,7 +16,7 @@ class CreateRecordsTable extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('date');
+            $table->string('date'); 
             $table->string('location');
             $table->integer('amount');
             $table->longText('des')->nullable();
@@ -28,8 +28,7 @@ class CreateRecordsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
+    /** 
      *
      * @return void
      */

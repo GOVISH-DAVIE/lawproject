@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Records;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Http\File;
 
 class RecordsController extends Controller
 {
@@ -14,6 +18,10 @@ class RecordsController extends Controller
     public function index()
     {
         //
+        $records = Records:: paginate(20);
+        return view('records.index')->with('records', $records);
+
+
     }
 
     /**
@@ -25,6 +33,31 @@ class RecordsController extends Controller
     {
         //
     }
+    public function uploadImages()
+    {
+        # code...
+        $images = array();
+        // return 
+        // return 22;
+
+        if (isset($_FILES['files'])) {
+            if ($_FILES['files']['error'][0] > 0) {
+                # code...
+                return $_FILES['files']['error'];
+            } else {
+                foreach ($_FILES['files']['name'] as $file => $value) {
+
+                    Storage::putFileAs('public/', new File($_FILES["files"]["tmp_name"][$file]),  STR::random(10) . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION));
+                    array_push($images, STR::random(10) . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION));
+                }
+                return json_encode($images);
+            }
+            # code...
+
+        } else {
+            return null;
+        }
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,6 +68,23 @@ class RecordsController extends Controller
     public function store(Request $request)
     {
         //
+        // return $_FILES;
+        // return $this->uploadImages();
+        $record =    Records::create(
+            [
+                'title' => $request->title,
+                'date' => $request->date,
+                'location' => $request->location,
+                'amount' => $request->amount,
+                'des' => $request->dec,
+                'email' => $request->email,
+                'tel' => $request->tel,
+                'name' => $request->name,
+                'docs' => $this->uploadImages(),
+                'user_id' => auth()->user()->id,
+            
+        ]);
+        return redirect()->back()->with(['success' => 'Created Succesfully']);;
     }
 
     /**
