@@ -12,4 +12,8 @@ class Payment extends Model
         'record_id',
         'amount'
     ];
+    public function record()
+    {
+        return $this->belongsTo(Records::class,'record_id','id');
+    }
 }

@@ -34,8 +34,7 @@
                 <div class="card">
                     <br>
                     <div class="container">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Search By Title</label>
+                        <div class="mb-3"> 
                             <input type="text" class="form-control" onkeyup="bytitle()" id="s_title" name="tel">
                         </div>
 

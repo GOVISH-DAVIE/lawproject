@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Models\Records;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -15,11 +16,16 @@ class PaymentController extends Controller
      */
     public function index()
     {
+        $th30 = (new Carbon)->subDays(30)->startOfDay()->toDateString();
+        // $today =  (new Carbon())->now()->endOfDay()->toDateString();
+        $today =  (new Carbon)->addDays(1)->startOfDay()->toDateString();
         //
         $record = Records::all();
-
+        $closed = Records::where('closed', 'closed')->get();
         $payment = Payment::all();
-        return view('payment.index')->with(array('records' => $record, 'payments' => $payment));
+        $paymentLest30 = Payment::whereBetween('created_at', [$th30." 00:00:00", $today." 00:00:00"])->get();
+      
+        return view('payment.index')->with(array('records' => $record, 'closed' => $closed, 'paymentLest30' => $paymentLest30, 'payments' => $payment));
     }
 
     /**
