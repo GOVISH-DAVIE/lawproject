@@ -46,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/records">{{ __('Records') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/payment">{{ __('Payments') }}</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

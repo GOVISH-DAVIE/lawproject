@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Auth;
@@ -23,5 +24,6 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::resource('records', RecordsController::class);
+Route::resource('payment', PaymentController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::post('/search/title', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
