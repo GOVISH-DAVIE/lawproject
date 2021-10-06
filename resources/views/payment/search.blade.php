@@ -72,7 +72,7 @@
 
                             </div>
                         </form>
-                        <h2> Payment History for last 30 days</h2>
+                        <h2> Payment History for {{$days['start']}} to {{$days['end']}}</h2>
                     </li>
 
                     @foreach ($paymentLest30 as $item)

@@ -23,8 +23,8 @@ class PaymentController extends Controller
         $record = Records::all();
         $closed = Records::where('closed', 'closed')->get();
         $payment = Payment::all();
-        $paymentLest30 = Payment::whereBetween('created_at', [$th30." 00:00:00", $today." 00:00:00"])->get();
-      
+        $paymentLest30 = Payment::whereBetween('created_at', [$th30 . " 00:00:00", $today . " 00:00:00"])->get();
+
         return view('payment.index')->with(array('records' => $record, 'closed' => $closed, 'paymentLest30' => $paymentLest30, 'payments' => $payment));
     }
 
@@ -96,6 +96,22 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
+        //
+    }
+
+    public function search(Request $request)
+    {
+        $th30 = (new Carbon($request->start))->startOfDay()->toDateString();
+
+        // $today =  (new Carbon())->now()->endOfDay()->toDateString();
+        $today =  (new Carbon($request->to))->startOfDay()->toDateString();
+        //
+        $record = Records::all();
+        $closed = Records::where('closed', 'closed')->get();
+        $payment = Payment::all();
+        $paymentLest30 = Payment::whereBetween('created_at', [$th30 . " 00:00:00", $today . " 00:00:00"])->get();
+$days = ['start' => $request->start, 'end' => $request->to];
+        return view('payment.search')->with(array('records' => $record, 'closed' => $closed, 'paymentLest30' => $paymentLest30, 'payments' => $payment, 'days' =>$days));
         //
     }
 }
