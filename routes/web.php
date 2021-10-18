@@ -23,9 +23,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::resource('records', RecordsController::class);
-Route::resource('payment', PaymentController::class);
-Route::post('paymentSearch', [PaymentController::class, 'search']);
-Route::get('recordsclose/{id}', [RecordsController::class, 'close']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('records', RecordsController::class)->middleware('auth');
+Route::resource('payment', PaymentController::class)->middleware('auth');
+Route::post('paymentSearch', [PaymentController::class, 'search'])->middleware('auth');
+Route::get('recordsclose/{id}', [RecordsController::class, 'close'])->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 // Route::post('/search/title', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

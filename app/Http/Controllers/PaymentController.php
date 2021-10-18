@@ -16,9 +16,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $th30 = (new Carbon)->subDays(30)->startOfDay()->toDateString(); 
+        $th30 = (new Carbon)->subDays(30)->startOfDay()->toDateString();
         $today =  (new Carbon)->addDays(1)->startOfDay()->toDateString();
-        
+
         $record = Records::all();
         $closed = Records::where('closed', 'close')->get();
         $payment = Payment::all();
@@ -85,6 +85,10 @@ class PaymentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $record = Records::find($request->record);
+        $record->amount = $request->amount;
+        $record->save(); 
+        return redirect()->back()->with(['success' => 'Payment Updated  Succesfully']);;
     }
 
     /**

@@ -94,6 +94,22 @@
                         </form>
                     </div>
                 </div>
+                <div class="card alert alert-secondary   " style="margin-top: 20px">
+                    <div class="card-body">
+                        <p> <b>Receivable:</b> {{ $record->amount }}</p>
+                         <p> <b>balance:</b> {{ intval($record->amount) - intval($record->payments->sum('amount')) }}</p>
+                        <form action="/payment/over" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"> Charges(KES) </label>
+                                <input type="number" class="form-control" id="exampleFormControlInput1" name="amount">
+                            </div>
+                            <input type="text" name="_method" value="PUT" hidden>
+                            <input hidden type="text" name="record" id="" value="{{ $record->id }}">
+                            <button type="submit" class="btn btn btn-outline-secondary btn-lg">Over Charge</button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
         </div>
