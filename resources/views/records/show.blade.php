@@ -31,14 +31,19 @@
                         <p class="card-text">
                             {{ $record->des }}
                         </p>
-                        <a href="#" class="btn btn btn-outline-secondary btn-lg">Delete</a>
+                        <form action="/payment/{{$record->id}}" method="POST">
+                            @csrf
+                            <input type="text" name="_method" value="delete" hidden>
+                            <button type="submit" class="btn btn btn-outline-secondary btn-lg">Delete</button>
+                        </form>
                         <a href="/records/{{ $record->id }}/edit" class="btn btn btn-outline-secondary btn-lg">Edit</a>
                         @if ($record->closed !== 'close')
                             <a href="/recordsclose/{{ $record->id }}" class="btn btn btn-outline-secondary btn-lg">Close
                                 Case</a>
-                    </div>
+                   
 
                     @endif
+                </div>
 
                 </div>
 
@@ -61,9 +66,9 @@
                         </li>
 
                     </ul>
-                </div>
+                </div> 
             </div>
-        </div>
+       
 
 
             <div class="col-md-4">

@@ -87,7 +87,7 @@ class PaymentController extends Controller
         //
         $record = Records::find($request->record);
         $record->amount = $request->amount;
-        $record->save(); 
+        $record->save();
         return redirect()->back()->with(['success' => 'Payment Updated  Succesfully']);;
     }
 
@@ -100,6 +100,9 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         //
+        $record = Records::find($id);
+        $record->delete();
+        return redirect('/records')->with(['success' => 'Record   Deleted']);;
     }
 
     public function search(Request $request)
