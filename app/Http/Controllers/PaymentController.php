@@ -16,10 +16,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $th30 = (new Carbon)->subDays(30)->startOfDay()->toDateString();
-        // $today =  (new Carbon())->now()->endOfDay()->toDateString();
+        $th30 = (new Carbon)->subDays(30)->startOfDay()->toDateString(); 
         $today =  (new Carbon)->addDays(1)->startOfDay()->toDateString();
-        //
+        
         $record = Records::all();
         $closed = Records::where('closed', 'close')->get();
         $payment = Payment::all();
