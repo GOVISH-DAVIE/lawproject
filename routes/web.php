@@ -29,3 +29,9 @@ Route::post('paymentSearch', [PaymentController::class, 'search'])->middleware('
 Route::get('recordsclose/{id}', [RecordsController::class, 'close'])->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 // Route::post('/search/title', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/foo', function () {
+    $target = '/home/crasllpy/law/storage/app/public';
+    $shortcut = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    symlink($target, $shortcut);
+    print_r($_SERVER['DOCUMENT_ROOT']);
+});
