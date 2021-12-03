@@ -86,7 +86,7 @@ class PaymentController extends Controller
     {
         //
         $record = Records::find($request->record);
-        $record->amount = $request->amount;
+        $record->amount = intval($request->amount)+ intval($record->amount);
         $record->save();
         return redirect()->back()->with(['success' => 'Payment Updated  Succesfully']);;
     }

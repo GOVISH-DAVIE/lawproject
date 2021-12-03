@@ -14,11 +14,21 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">File Number: {{ $record->filenumber }}</h3>
-                        <h3 class="card-title">{{ $record->title }}</h3>
-                        <h3 class="card-title">KES {{ $record->amount }}</h3>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h3 class="card-title">File Number: {{ $record->filenumber }}</h3>
+                                <h3 class="card-title">Title: {{ $record->title }}</h3>
+                                <h3 class="card-title">KES {{ $record->amount }}</h3>
 
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $record->date }}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ $record->date }}</h6>
+                                <br>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="/notes/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i class="fa fa-edit"
+                                    aria-hidden="true"></i>notes</a>
+                            </div>
+                        </div>
+                     
                         <hr>
                         <div>
                             <H4>Documents</H4>
@@ -35,7 +45,7 @@
                         <div class="row">
 
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <form action="/payment/{{ $record->id }}" method="POST">
                                     @csrf
                                     <input type="text" name="_method" value="delete" hidden>
@@ -44,19 +54,18 @@
                                         Delete</button>
                                 </form>
                             </div>
-                            <div class="col-md-4">
-                                <a href="/records/{{ $record->id }}/edit"
-                                    class="btn btn btn-outline-success btn-lg">
-                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                            <div class="col-md-2">
+                                <a href="/records/{{ $record->id }}/edit" class="btn btn btn-outline-success btn-lg">
+                                    <i class="fa fa-pen" aria-hidden="true"></i>
                                     Edit</a>
                             </div>
                             <div class="col-md-4">
                                 @if ($record->closed !== 'close')
                                     <a href="/recordsclose/{{ $record->id }}"
                                         class=" pt-200 btn text-dark btn-outline-warning btn-lg">
-                                        
-                                    <i class="fa fa-times" aria-hidden="true"></i>
-                                        Close  Case</a>
+
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                        Close Case</a>
                                 @endif
                             </div>
                         </div>
