@@ -14,6 +14,7 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
+                        <h3 class="card-title">File Number: {{ $record->filenumber }}</h3>
                         <h3 class="card-title">{{ $record->title }}</h3>
                         <h3 class="card-title">KES {{ $record->amount }}</h3>
 
@@ -22,8 +23,8 @@
                         <div>
                             <H4>Documents</H4>
                             @foreach (json_decode($record->docs) as $doc)
-                                <a href="/storage/{{ $doc }}" target="_blank"
-                                    class="card-link">{{ $doc }}</a>
+                                <a href="/storage/{{ $doc }}" class="btn btn-lg btn-outline-dark" target="_blank"
+                                    class="card-link"><i class="fa fa-download fa-2x"></i>{{ $doc }}</a>
                             @endforeach
                             <hr>
                         </div>
@@ -31,19 +32,37 @@
                         <p class="card-text">
                             {{ $record->des }}
                         </p>
-                        <form action="/payment/{{$record->id}}" method="POST">
-                            @csrf
-                            <input type="text" name="_method" value="delete" hidden>
-                            <button type="submit" class="btn btn btn-outline-secondary btn-lg">Delete</button>
-                        </form>
-                        <a href="/records/{{ $record->id }}/edit" class="btn btn btn-outline-secondary btn-lg">Edit</a>
-                        @if ($record->closed !== 'close')
-                            <a href="/recordsclose/{{ $record->id }}" class="btn btn btn-outline-secondary btn-lg">Close
-                                Case</a>
-                   
+                        <div class="row">
 
-                    @endif
-                </div>
+
+                            <div class="col-md-4">
+                                <form action="/payment/{{ $record->id }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="_method" value="delete" hidden>
+                                    <button type="submit" class="btn btn btn-outline-danger btn-lg">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        Delete</button>
+                                </form>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="/records/{{ $record->id }}/edit"
+                                    class="btn btn btn-outline-success btn-lg">
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                    Edit</a>
+                            </div>
+                            <div class="col-md-4">
+                                @if ($record->closed !== 'close')
+                                    <a href="/recordsclose/{{ $record->id }}"
+                                        class=" pt-200 btn text-dark btn-outline-warning btn-lg">
+                                        
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                        Close  Case</a>
+                                @endif
+                            </div>
+                        </div>
+
+
+                    </div>
 
                 </div>
 
@@ -66,9 +85,9 @@
                         </li>
 
                     </ul>
-                </div> 
+                </div>
             </div>
-       
+
 
 
             <div class="col-md-4">
@@ -102,7 +121,7 @@
                 <div class="card alert alert-secondary   " style="margin-top: 20px">
                     <div class="card-body">
                         <p> <b>Receivable:</b> {{ $record->amount }}</p>
-                         <p> <b>balance:</b> {{ intval($record->amount) - intval($record->payments->sum('amount')) }}</p>
+                        <p> <b>balance:</b> {{ intval($record->amount) - intval($record->payments->sum('amount')) }}</p>
                         <form action="/payment/over" method="POST">
                             @csrf
                             <div class="mb-3">
