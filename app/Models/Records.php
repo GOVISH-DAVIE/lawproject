@@ -18,7 +18,8 @@ class Records extends Model
         'tel',
         'docs',
         'user_id',
-        'clientname'
+        'clientname',
+        'filenumber'
     ];
     public function payments()
     {

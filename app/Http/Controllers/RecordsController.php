@@ -68,6 +68,7 @@ class RecordsController extends Controller
         //
         // return $_FILES;
         // return $this->uploadImages();
+        // return $_POST;
         $record =    Records::create(
             [
                 'title' => $request->title,
@@ -81,6 +82,7 @@ class RecordsController extends Controller
                 'docs' => $this->uploadImages(),
                 'user_id' => auth()->user()->id,
 
+                'filenumber' => $request->filenumber
             ]
         );
         return redirect()->back()->with(['success' => 'Created Succesfully']);;
@@ -120,8 +122,7 @@ class RecordsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        // 
+    { 
         $record = Records::find($id);
         $record->title = $request->title;
         $record->date = $request->date;
@@ -133,6 +134,7 @@ class RecordsController extends Controller
         $record->clientname = $request->name;
         $record->docs = $this->uploadImages();
         $record->user_id = auth()->user()->id;
+        $record->filenumber = $request->filenumber;
         $record->save();
         return redirect('records/'.$record->id)->with(['success' => 'Updated Succesfully']);;
   

@@ -15,6 +15,11 @@
                                         placeholder="Title">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label"> File Number </label>
+                                    <input type="text" class="form-control" name="filenumber" id="exampleFormControlInput1"
+                                        placeholder="File Number">
+                                </div>
+                                <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label"> Date</label>
                                     <input type="date" class="form-control" name='date' id="exampleFormControlInput1">
                                 </div>

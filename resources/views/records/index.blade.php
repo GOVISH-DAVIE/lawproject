@@ -9,6 +9,7 @@
                     <div class="card shadow record-view-card" style="margin-top: 20px">
                         <div class="card-header">
                             <h5><b><u>Case Title: </u></b> {{ $record->title }}</h5>
+                            <h5><b><u> File Number: </u></b> {{ $record->filenumber }}</h5>
                             <b><u>Case Location: </u></b> {{ $record->location }}
                             <b><u>Case Date: </u></b> {{ $record->date }}
                         </div>
