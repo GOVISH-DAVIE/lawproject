@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\SearchController;
@@ -28,6 +29,7 @@ Route::resource('payment', PaymentController::class)->middleware('auth');
 Route::post('paymentSearch', [PaymentController::class, 'search'])->middleware('auth');
 Route::get('recordsclose/{id}', [RecordsController::class, 'close'])->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::resource('notes', NotesController::class)->middleware('auth');
 // Route::post('/search/title', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/foo', function () {
     $target = '/home/crasllpy/law/storage/app/public';

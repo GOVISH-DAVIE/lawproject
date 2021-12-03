@@ -26,4 +26,8 @@ class Records extends Model
         return $this->hasMany(Payment::class, 'record_id', 'id');
         # code...
     }
+    public function notes()
+    {
+        return $this->hasMany(Notes::class);
+    }
 }

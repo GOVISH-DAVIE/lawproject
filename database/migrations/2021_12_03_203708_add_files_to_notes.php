@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotesTable extends Migration
+class AddFilesToNotes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notes', function (Blueprint $table) {
-            $table->id();
-            $table->longText('text');
-            $table->integer('records_id');
-            $table->string('istexted');
-            $table->timestamps();
+        Schema::table('notes', function (Blueprint $table) {
+            //
+            $table->longText('files');
         });
     }
 
@@ -29,6 +26,8 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notes');
+        Schema::table('notes', function (Blueprint $table) {
+            //
+        });
     }
 }

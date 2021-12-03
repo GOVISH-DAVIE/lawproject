@@ -85,7 +85,7 @@ class RecordsController extends Controller
                 'filenumber' => $request->filenumber
             ]
         );
-        return redirect()->back()->with(['success' => 'Created Succesfully']);;
+        return redirect()->back()->with(['success' => 'Created Succesfully']);
     }
 
     /**

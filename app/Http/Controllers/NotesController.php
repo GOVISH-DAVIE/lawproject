@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notes;
 use App\Models\Records;
+
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NotesController extends Controller
 {
@@ -48,6 +52,8 @@ class NotesController extends Controller
     {
         //
         $record = Records::find($id);
+        $record->load('notes');
+        return view('notes.index')->with('record', $record);
     }
 
     /**
@@ -61,6 +67,32 @@ class NotesController extends Controller
         //
     }
 
+    public function uploadImages()
+    {
+        # code...
+        $images = array();
+        // return 
+        // return 22;
+
+        if (isset($_FILES['files'])) {
+            if ($_FILES['files']['error'][0] > 0) {
+                # code...
+                return $_FILES['files']['error'];
+            } else {
+                foreach ($_FILES['files']['name'] as $file => $value) {
+                    $filename =  $_FILES['files']['name'][$file] . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION);
+                    Storage::putFileAs('public/', new File($_FILES["files"]["tmp_name"][$file]), $filename);
+                    array_push($images,  $filename);
+                }
+                return json_encode($images);
+            }
+            # code...
+
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -69,8 +101,15 @@ class NotesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+
+        $notes = Notes::create([
+            'files'=>$this->uploadImages(),
+            'istexted'=>$request->sms,
+            'records_id'=>intval($id), 
+            'text'=>$request->notes,
+        ]);
+        return redirect()->back()->with(['success' => 'Created Succesfully']);
     }
 
     /**

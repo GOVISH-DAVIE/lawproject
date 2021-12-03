@@ -10009,6 +10009,10 @@ body {
   background-color: aliceblue;
 }
 
+main {
+  min-height: 60vh;
+}
+
 .auth {
   height: 100vh;
   display: flex;
