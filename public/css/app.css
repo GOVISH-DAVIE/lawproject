@@ -10005,3 +10005,13 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.auth {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/images/auth.png?171037d2f39477861afdf6ee8ee3408d);
+  background-size: cover;
+  background-position: center;
+}
