@@ -6,7 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-.auth{
+body{
+    background-color: aliceblue;
+}
+.auth {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -16,8 +19,34 @@
     background-image: url(../img/auth.png);
     background-size: cover;
     background-position: center;
-    input{
+
+    input {
         border: none;
     }
 }
 
+
+.record-view-card {
+    border: none !important;
+    &:hover {
+        background-color: $cyan;
+
+        animation: bounce 1s forwards 0s linear;
+    }
+}
+
+@keyframes bounce {
+    0% {
+
+        transform: rotate(00) translateY(0%);
+    }
+
+    50% {
+        transform: rotate(00) translateY(2%);
+    }
+
+    100% {
+
+        transform: rotate(00) translateY(0%);
+    }
+}

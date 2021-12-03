@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-8">
                 @foreach ($records as $record)
-                    <div class="card" style="margin-top: 20px">
+                    <div class="card shadow record-view-card" style="margin-top: 20px">
                         <div class="card-header">
                             <h5><b><u>Case Title: </u></b> {{ $record->title }}</h5>
                             <b><u>Case Location: </u></b> {{ $record->location }}
@@ -21,7 +21,7 @@
                             </p>
                             <p class="card-text">
                             </p>
-                            <a href="/records/{{ $record->id }}" class="btn btn-primary">View </a>
+                            <a href="/records/{{ $record->id }}" class="btn btn-lg btn-outline-dark">View </a>
                         </div>
                     </div>
                 @endforeach

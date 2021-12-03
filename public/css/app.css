@@ -10005,6 +10005,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+body {
+  background-color: aliceblue;
+}
+
 .auth {
   height: 100vh;
   display: flex;
@@ -10017,4 +10021,37 @@ h3 {
 }
 .auth input {
   border: none;
+}
+
+.record-view-card {
+  border: none !important;
+}
+.record-view-card:hover {
+  background-color: #6cb2eb;
+  -webkit-animation: bounce 1s forwards 0s linear;
+          animation: bounce 1s forwards 0s linear;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    transform: rotate(0) translateY(0%);
+  }
+  50% {
+    transform: rotate(0) translateY(2%);
+  }
+  100% {
+    transform: rotate(0) translateY(0%);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: rotate(0) translateY(0%);
+  }
+  50% {
+    transform: rotate(0) translateY(2%);
+  }
+  100% {
+    transform: rotate(0) translateY(0%);
+  }
 }

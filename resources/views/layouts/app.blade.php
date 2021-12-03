@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"> 
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/d.png" height="60" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -52,6 +52,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/payment">{{ __('Payments') }}</a>
                         </li>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fa fa-plus" aria-hidden="true"></i>  new Record
+                        </button>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -75,7 +78,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -104,12 +107,33 @@
                     </div>
                 @endif
             </div>
+            <!-- Button trigger modal -->
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body"> 
+                            @include('home')
+                        </div> 
+                    </div>
+                </div>
+            </div>
             @yield('content')
         </main>
     </div>
     <footer class="alert alert-danger" style="text-align: center">
         <hr>
-        <img src="/d.png" height="40" alt=""><h6> © 2021 Copyright: 9davidmuia@gmail.com</h6>
+        <img src="/d.png" height="40" alt="">
+        <h6> © 2021 Copyright: 9davidmuia@gmail.com</h6>
     </footer>
 </body>
 
@@ -147,7 +171,7 @@
                     </div>`
 
                 });
-                document.getElementById('search').innerHTML = s+'</div>'
+                document.getElementById('search').innerHTML = s + '</div>'
             })
             .catch(err => {
                 console.error(err)
