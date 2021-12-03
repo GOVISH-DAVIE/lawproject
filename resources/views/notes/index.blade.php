@@ -23,16 +23,22 @@
                                 <h6 class="card-subtitle mb-2 text-muted">{{ $record->date }}</h6>
                                 <br>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <a href="/notes/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
-                                        class="fa fa-edit" aria-hidden="true"></i>notes</a>
+                                        class="fa fa-edit" aria-hidden="true"></i> notes</a>
+                                        <br>
+                                        <br>
+                                        <a href="/notes/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
+                                            class="fa fa-calendar" aria-hidden="true"></i> Court Appearance </a>
+                               
                             </div>
+                            
                         </div>
 
                         <hr>
 
                         <br>
-                       
+
                         <form enctype="multipart/form-data" action="/notes/{{ $record->id }}" method="POST">
                             @csrf
                             <input type="text" name="_method" value="PUT" hidden>
@@ -59,7 +65,33 @@
                 </div>
 
                 <br>
-                
+                <div class="card shadow">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item active" aria-current="true">Notes History</li>
+
+                        @foreach ($record->notes as $item)
+                            <li class="list-group-item"> 
+                               <p> {{ $item->text }}</p>
+                                @if ($item->istexted=='on' )
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" checked class="custom-control-input" disabled id="customSwitch2">
+                                    <label class="custom-control-label" for="customSwitch2">SMS sent to Client</label>
+                                  </div> 
+                                    
+                                @endif
+                                  <br>
+                                <h6 class="card-subtitle mb-2 text-muted">Created on: {{ $item->created_at }}</h6>
+
+                            </li>
+                        @endforeach
+
+                       
+
+                    </ul>
+                </div>
+
             </div>
 
 

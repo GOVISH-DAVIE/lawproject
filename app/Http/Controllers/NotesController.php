@@ -101,13 +101,13 @@ class NotesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
+    {
 
         $notes = Notes::create([
-            'files'=>$this->uploadImages(),
-            'istexted'=>$request->sms,
-            'records_id'=>intval($id), 
-            'text'=>$request->notes,
+            'files' => $this->uploadImages(),
+            'istexted' => $request->sms == null ? 'off' : $request->sms,
+            'records_id' => intval($id),
+            'text' => $request->notes,
         ]);
         return redirect()->back()->with(['success' => 'Created Succesfully']);
     }
