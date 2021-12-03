@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Records;
 use Illuminate\Http\Request;
 
 class NotesController extends Controller
@@ -46,6 +47,7 @@ class NotesController extends Controller
     public function show($id)
     {
         //
+        $record = Records::find($id);
     }
 
     /**
