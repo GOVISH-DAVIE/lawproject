@@ -1,6 +1,7 @@
 require('./bootstrap');
 
-
+var Calendar = require('tui-calendar'); 
+ 
 /*!
  * Chart.js v3.5.1
  * https://www.chartjs.org

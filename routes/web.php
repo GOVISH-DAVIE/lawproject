@@ -22,6 +22,10 @@ Route::get('/', function () {
     // return view('welcome');
     return response()->redirectTo('/home');
 });
+Route::get('/calender/{id}', function () {
+    // return view('welcome');
+    return view('calender.index');
+});
 
 Auth::routes();
 Route::resource('records', RecordsController::class)->middleware('auth');
