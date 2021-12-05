@@ -69,7 +69,7 @@
 
                     <ul class="list-group">
 
-                        <li class="list-group-item active" aria-current="true">Notes History</li>
+                        <li class="list-group-item       bg-main" aria-current="true">Notes History</li>
 
                         @foreach ($record->notes as $item)
                             <li class="list-group-item"> 

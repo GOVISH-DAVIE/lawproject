@@ -23,7 +23,7 @@ Route::get('/', function () {
     // return view('welcome');
     return response()->redirectTo('/home');
 });
-Route::resource('calender', CalenderController::class);
+Route::resource('calender', CalenderController::class)->middleware('auth');
 
 Auth::routes();
 Route::resource('records', RecordsController::class)->middleware('auth');

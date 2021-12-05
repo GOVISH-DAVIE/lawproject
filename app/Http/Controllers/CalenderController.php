@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Calender;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CalenderController extends Controller
 {
@@ -35,7 +37,15 @@ class CalenderController extends Controller
     public function store(Request $request)
     {
         //
-        return json_decode($request->data);
+        // return json_decode($request->data);
+        $calender = Calender::create([
+            'user' => Auth::user()->id,
+            'start' => json_decode($request->data)->start,
+            'allDay'=>json_decode($request->data)->allDay,
+            'end' =>json_decode($request->data)->end,
+            'title'=> json_decode($request->data)->title
+        ]);
+        return $calender;
     }
 
     /**
@@ -47,7 +57,8 @@ class CalenderController extends Controller
     public function show($id)
     {
         //
-        return view('calender.index');
+        $calender = Calender::where('user', Auth::user()->id)->get();
+        return view('calender.index')->with('event', $calender);
     }
 
     /**

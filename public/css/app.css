@@ -11177,6 +11177,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.bg-main {
+  background-color: #E5967D;
+}
+
 body {
   background-color: aliceblue;
 }

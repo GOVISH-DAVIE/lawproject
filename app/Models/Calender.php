@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Calender extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user',
+        'start',
+        'allDay',
+        'end',
+        'title'
+    ];
 }

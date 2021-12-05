@@ -23,12 +23,15 @@
                                 <h6 class="card-subtitle mb-2 text-muted">{{ $record->date }}</h6>
                                 <br>
                             </div>
-                            <div class="col-md-3">
-                                <a href="/notes/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i class="fa fa-edit"
-                                    aria-hidden="true"></i>notes</a>
+                            <div class="col-md-4">
+                                <a href="/notes/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
+                                        class="fa fa-edit" aria-hidden="true"></i>notes</a>
+                                <br> <br> <a href="/calender/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
+                                        class="fa fa-calendar" aria-hidden="true"></i> Court Appearance </a>
+
                             </div>
                         </div>
-                     
+
                         <hr>
                         <div>
                             <H4>Documents</H4>
@@ -80,7 +83,7 @@
 
                     <ul class="list-group">
 
-                        <li class="list-group-item active" aria-current="true">Payment History</li>
+                        <li class="list-group-item bg-main  " aria-current="true">Payment History</li>
 
                         @foreach ($record->payments as $item)
                             <li class="list-group-item">KES {{ $item->amount }}
@@ -89,7 +92,7 @@
                             </li>
                         @endforeach
 
-                        <li class="list-group-item active" aria-current="true">
+                        <li class="list-group-item bg-main" aria-current="true">
                             <h4>Total: {{ $record->payments->sum('amount') }}</h4>
                         </li>
 
@@ -127,7 +130,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="card alert alert-secondary   " style="margin-top: 20px">
+                <div class="card alert bg-main shadow   " style="margin-top: 20px">
                     <div class="card-body">
                         <p> <b>Receivable:</b> {{ $record->amount }}</p>
                         <p> <b>balance:</b> {{ intval($record->amount) - intval($record->payments->sum('amount')) }}</p>

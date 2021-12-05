@@ -67,8 +67,8 @@
                                     Get payment to
                                     <input type="date" class="form-control" name="to" id="exampleFormControlInput1">
                                 </div>
-                                <button type="submit" class="btn ml-3 btn-dark text-white btn-outline-secondary btn-lg">
-                                    Submit </button>
+                                <button type="submit" class="btn ml-3 btn-dark text-white btn-outline-secondary ">
+                                    Fetch </button>
 
                             </div>
                         </form>
