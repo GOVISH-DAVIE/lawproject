@@ -73,7 +73,15 @@
 
                         @foreach ($record->notes as $item)
                             <li class="list-group-item"> 
-                               <p> {{ $item->text }}</p>
+                               <p> {{ $item->text }}</p> 
+                    <div class="container">
+                        @foreach (json_decode($item->files) as $file) 
+                        <a href="/storage/{{ $file }}" class=" mb-200 btn btn-lg btn-outline-warning text-dark" target="_blank"
+                        class="card-link"><i class="fa fa-download fa-2x"></i>{{ $file }}</a>
+             
+                    @endforeach
+                    </div>
+                               <br><br>
                                 @if ($item->istexted=='on' )
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" checked class="custom-control-input" disabled id="customSwitch2">
