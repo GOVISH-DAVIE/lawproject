@@ -1,7 +1,136 @@
 require('./bootstrap');
 
-var Calendar = require('tui-calendar'); 
- 
+// var Calendar = require('tui-calendar'); 
+// var templates = {
+//     popupIsAllDay: function() {
+//       return 'All Day';
+//     },
+//     popupStateFree: function() {
+//       return 'Free';
+//     },
+//     popupStateBusy: function() {
+//       return 'Busy';
+//     },
+//     titlePlaceholder: function() {
+//       return 'Subject';
+//     },
+//     locationPlaceholder: function() {
+//       return 'Location';
+//     },
+//     startDatePlaceholder: function() {
+//       return 'Start date';
+//     },
+//     endDatePlaceholder: function() {
+//       return 'End date';
+//     },
+//     popupSave: function() {
+//       return 'Save';
+//     },
+//     popupUpdate: function() {
+//       return 'Update';
+//     },
+//     popupDetailDate: function(isAllDay, start, end) {
+//       console.log('datesssss');
+//       var isSameDate = moment(start).isSame(end);
+//       var endFormat = (isSameDate ? '' : 'YYYY.MM.DD ') + 'hh:mm a';
+
+//       if (isAllDay) {
+//         return moment(start).format('YYYY.MM.DD') + (isSameDate ? '' : ' - ' + moment(end).format('YYYY.MM.DD'));
+//       }
+
+//       return (moment(start).format('YYYY.MM.DD hh:mm a') + ' - ' + moment(end).format(endFormat));
+//     },
+//     popupDetailLocation: function(schedule) {
+//       return 'Location : ' + schedule.location;
+//     },
+//     popupDetailUser: function(schedule) {
+//       return 'User : ' + (schedule.attendees || []).join(', ');
+//     },
+//     popupDetailState: function(schedule) {
+//       return 'State : ' + schedule.state || 'Busy';
+//     },
+//     popupDetailRepeat: function(schedule) {
+//       return 'Repeat : ' + schedule.recurrenceRule;
+//     },
+//     popupDetailBody: function(schedule) {
+//       return 'Body : ' + schedule.body;
+//     },
+//     popupEdit: function() {
+//       return 'Edit';
+//     },
+//     popupDelete: function() {
+//       return 'Delete';
+//     }
+//   };
+
+//         var cal = new Calendar('#calendar', {
+//             defaultView: 'month',
+//             taskView: true,
+//             scheduleView: true,
+//             template: templates,
+//             theme: {
+//                 'common.border': '1px solid #ffbb3b',
+//                 'common.backgroundColor': '#ffbb3b0f',
+//                 'common.holiday.color': '#f54f3d',
+//                 'common.saturday.color': '#3162ea',
+//                 'common.dayname.color': '#333'
+//             },
+//             useCreationPopup: true,
+//             useDetailPopup: true
+//         });
+//         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+//             "October",
+//             "November", "December"
+//         ];
+
+       
+//         const toDay = () => cal.changeView('day', true);
+//         const toWeek = () => {
+//             cal.changeView('week', true);
+//         }
+//         const tomoth = () => {
+//             cal.setOptions({
+//                 month: {
+//                     visibleWeeksCount: 6
+//                 }
+//             }, true); // or null
+//             cal.changeView('month', true);
+//         }
+
+//         function moveToNextOrPrevRange(val) {
+//             if (val === -1) {
+//                 cal.prev();
+//             } else if (val === 1) {
+//                 cal.next();
+//             }
+//             document.getElementById('today').innerHTML = months[(new Date(cal.getDate()._date)).getMonth()]
+
+//         }
+
+
+//         function addschedule() {
+//             cal.createSchedules([{
+//                 id: '1',
+//                 calendarId: '1',
+//                 title: 'my schedule',
+//                 category: 'time',
+//                 dueDateClass: '',
+//                 start: '2018-01-18T22:30:00+09:00',
+//                 end: '2018-01-19T02:30:00+09:00'
+//             }, ]);
+//         }
+
+
+//         cal.on('clickDayname', function(event) {
+//             if (cal.getViewName() === 'week') {
+//                 cal.setDate(new Date(event.date));
+//                 cal.changeView('day', true);
+//                 document.getElementById('today').innerHTML = months[(new Date(cal.getDate()._date)).getMonth()]
+
+//             }
+//         });
+
+
 /*!
  * Chart.js v3.5.1
  * https://www.chartjs.org
