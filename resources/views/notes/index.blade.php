@@ -105,7 +105,7 @@
 
 
             <div class="col-md-4">
-                <div class="card shadow">
+                <div class="card " style="border: none">
                     <div class="card-body">
                         <h1><u>Client Details</u></h1>
                         <h3 class="card-title">{{ $record->clientname }}</h3>
@@ -116,7 +116,7 @@
 
                     </div>
                 </div>
-                <div class="card alert alert-secondary   " style="margin-top: 20px">
+                <div class="card alert bg-body shadow  " style="margin-top: 20px">
                     <div class="card-body">
                         <p> <b>Receivable:</b> {{ $record->amount }}</p>
                         <p> <b>Paid:</b> {{ $record->payments->sum('amount') }}</p>

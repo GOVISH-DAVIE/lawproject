@@ -140,7 +140,7 @@
             @yield('content')
         </main>
     </div>
-    <footer class="alert  bg-main" style="text-align: center">
+    <footer class="alert bg-main" style="text-align: center">
         <hr>
         <img src="/d.png" height="40" alt="">
         <h6> © 2021 Copyright: 9davidmuia@gmail.com</h6>

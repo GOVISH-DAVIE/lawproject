@@ -11181,6 +11181,10 @@ h3 {
   background-color: #E5967D;
 }
 
+.bg-body {
+  background-color: aliceblue;
+}
+
 body {
   background-color: aliceblue;
 }
