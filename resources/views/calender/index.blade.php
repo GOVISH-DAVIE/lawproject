@@ -1,66 +1,75 @@
 @extends('layouts.app')
 
 @section('content')
- 
-<div id='top'>
 
-  <div class='left'>
+    <div class="container">
+        <div id='top'>
 
-    <div id='theme-system-selector' class='selector'>
-      Theme System:
 
-      <select>
-        <option value='bootstrap' selected>Bootstrap 4</option>
-        <option value='standard'>unthemed</option>
-      </select>
+
+
+
+
+
+
+            <div class='left'>
+
+                <div id='theme-system-selector' class='selector'>
+                    Theme System:
+
+                    <select>
+
+                        <option value='bootstrap' selected>Bootstrap 4</option>
+                        <option value='standard'>unthemed</option>
+
+                    </select>
+                </div>
+
+                <div data-theme-system="bootstrap" class='selector' style='display:none'>
+                    Theme Name:
+
+                    <select>
+                        <option value='' selected>Default</option>
+                        <option value='cerulean'>Cerulean</option>
+                        <option value='cosmo'>Cosmo</option>
+                        <option value='cyborg'>Cyborg</option>
+                        <option value='darkly'>Darkly</option>
+                        <option value='flatly'>Flatly</option>
+                        <option value='journal'>Journal</option>
+                        <option value='litera'>Litera</option>
+                        <option value='lumen'>Lumen</option>
+                        <option value='lux'>Lux</option>
+                        <option value='materia'>Materia</option>
+                        <option value='minty'>Minty</option>
+                        <option value='pulse'>Pulse</option>
+                        <option value='sandstone'>Sandstone</option>
+                        <option value='simplex'>Simplex</option>
+                        <option value='sketchy'>Sketchy</option>
+                        <option value='slate'>Slate</option>
+                        <option value='solar'>Solar</option>
+                        <option value='spacelab'>Spacelab</option>
+                        <option value='superhero'>Superhero</option>
+                        <option value='united'>United</option>
+                        <option value='yeti'>Yeti</option>
+                    </select>
+                </div>
+
+                <span id='loading' style='display:none'>loading theme...</span>
+
+            </div>
+
+            <div class='right'>
+                <span class='credits' data-credit-id='bootstrap-standard' style='display:none'>
+                </span>
+                <span class='credits' data-credit-id='bootstrap-custom' style='display:none'>
+                </span>
+            </div>
+
+            <div class='clear'></div>
+        </div>
+
+        <div id='calendar'></div>
     </div>
-
-    <div data-theme-system="bootstrap" class='selector' style='display:none'>
-      Theme Name:
-
-      <select>
-        <option value='' selected>Default</option>
-        <option value='cerulean'>Cerulean</option>
-        <option value='cosmo'>Cosmo</option>
-        <option value='cyborg'>Cyborg</option>
-        <option value='darkly'>Darkly</option>
-        <option value='flatly'>Flatly</option>
-        <option value='journal'>Journal</option>
-        <option value='litera'>Litera</option>
-        <option value='lumen'>Lumen</option>
-        <option value='lux'>Lux</option>
-        <option value='materia'>Materia</option>
-        <option value='minty'>Minty</option>
-        <option value='pulse'>Pulse</option>
-        <option value='sandstone'>Sandstone</option>
-        <option value='simplex'>Simplex</option>
-        <option value='sketchy'>Sketchy</option>
-        <option value='slate'>Slate</option>
-        <option value='solar'>Solar</option>
-        <option value='spacelab'>Spacelab</option>
-        <option value='superhero'>Superhero</option>
-        <option value='united'>United</option>
-        <option value='yeti'>Yeti</option>
-      </select>
-    </div>
-
-    <span id='loading' style='display:none'>loading theme...</span>
-
-  </div>
-
-  <div class='right'>
-    <span class='credits' data-credit-id='bootstrap-standard' style='display:none'>
-      <a href='https://getbootstrap.com/docs/3.3/' target='_blank'>Theme by Bootstrap</a>
-    </span>
-    <span class='credits' data-credit-id='bootstrap-custom' style='display:none'>
-      <a href='https://bootswatch.com/' target='_blank'>Theme by Bootswatch</a>
-    </span>
-  </div>
-
-  <div class='clear'></div>
-</div>
-
-<div id='calendar'></div>
     {{-- <buttonsdar"></div> --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css" /> --}}
 
@@ -73,96 +82,147 @@
     <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script> --}}
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar;
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar;
 
-    initThemeChooser({
+            initThemeChooser({
 
-      init: function(themeSystem) {
-        calendar = new FullCalendar.Calendar(calendarEl, {
-          themeSystem: themeSystem,
-          headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-          },
-          initialDate: '2020-09-12',
-          weekNumbers: true,
-          navLinks: true, // can click day/week names to navigate views
-          editable: true,
-          selectable: true,
-          nowIndicator: true,
-          dayMaxEvents: true, // allow "more" link when too many events
-          // showNonCurrentDates: false,
-          events: [
-            {
-              title: 'All Day Event',
-              start: '2020-09-01'
-            },
-            {
-              title: 'Long Event',
-              start: '2020-09-07',
-              end: '2020-09-10'
-            },
-            {
-              groupId: 999,
-              title: 'Repeating Event',
-              start: '2020-09-09T16:00:00'
-            },
-            {
-              groupId: 999,
-              title: 'Repeating Event',
-              start: '2020-09-16T16:00:00'
-            },
-            {
-              title: 'Conference',
-              start: '2020-09-11',
-              end: '2020-09-13'
-            },
-            {
-              title: 'Meeting',
-              start: '2020-09-12T10:30:00',
-              end: '2020-09-12T12:30:00'
-            },
-            {
-              title: 'Lunch',
-              start: '2020-09-12T12:00:00'
-            },
-            {
-              title: 'Meeting',
-              start: '2020-09-12T14:30:00'
-            },
-            {
-              title: 'Happy Hour',
-              start: '2020-09-12T17:30:00'
-            },
-            {
-              title: 'Dinner',
-              start: '2020-09-12T20:00:00'
-            },
-            {
-              title: 'Birthday Party',
-              start: '2020-09-13T07:00:00'
-            },
-            {
-              title: 'Click for Google',
-              url: 'http://google.com/',
-              start: '2020-09-28'
-            }
-          ]
+                init: function(themeSystem) {
+                    calendar = new FullCalendar.Calendar(calendarEl, {
+                        themeSystem: 'standard',
+                        headerToolbar: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                        },
+                        initialDate: '2020-09-12',
+                        weekNumbers: true,
+                        navLinks: true, // can click day/week names to navigate views
+                        editable: true,
+                        selectable: true,
+                        eventClick: function(arg) {
+                            if (confirm('Are you sure you want to delete this event?')) {
+                                arg.event.remove()
+                            }
+                        },
+                        eventRender: function(event, element) {
+                            element.popover({
+                                animation: true,
+                                delay: 300,
+                                content: '<b>Inicio</b>:' + event.start +
+                                    "<b>Fin</b>:" + event.end,
+                                trigger: 'hover'
+                            });
+                        },
+                        select: async function(arg) {
+                            var title = prompt('Event Title:');
+                            if (title) {
+                                let fd = new FormData()
+                                fd.append('data', JSON.stringify({
+                                    title: title,
+                                    start: arg.start,
+                                    end: arg.end,
+                                    allDay: arg.allDay
+                                }))
+                                let object = {
+                                    title: title,
+                                    start: arg.start,
+                                    end: arg.end,
+                                    allDay: arg.allDay
+                                }
+                                await fetch('/calender', {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                                .attr('content')
+                                        },
+                                        body: fd
+                                    })
+                                    .then(
+                                        res => res.json()
+                                    ).then(data => {
+                                        console.log(
+                                            data, 'FROM Calender'
+                                        );
+                                    })
+                                    .catch(err => {
+                                        console.log(err);
+                                    })
+                                calendar.addEvent(object)
+                            }
+                            calendar.unselect()
+                        },
+                        nowIndicator: true,
+                        dayMaxEvents: true, // allow "more" link when too many events
+                        // showNonCurrentDates: false,
+                        events: [{
+                                title: 'All Day Event',
+                                start: '2020-09-01'
+                            },
+                            {
+                                title: 'Long Event',
+                                start: '2020-09-07',
+                                end: '2020-09-10'
+                            },
+                            {
+                                groupId: 999,
+                                title: 'Repeating Event',
+                                start: '2020-09-09T16:00:00'
+                            },
+                            {
+                                groupId: 999,
+                                title: 'Repeating Event',
+                                start: '2020-09-16T16:00:00'
+                            },
+                            {
+                                title: 'Conference',
+                                start: '2020-09-11',
+                                end: '2020-09-13'
+                            },
+                            {
+                                title: 'Meeting',
+                                start: '2020-09-12T10:30:00',
+                                end: '2020-09-12T12:30:00'
+                            },
+                            {
+                                title: 'Lunch',
+                                start: '2020-09-12T12:00:00'
+                            },
+                            {
+                                title: 'Meeting',
+                                start: '2020-09-12T14:30:00'
+                            },
+                            {
+                                title: 'Happy Hour',
+                                start: '2020-09-12T17:30:00'
+                            },
+                            {
+                                title: 'Dinner',
+                                start: '2020-09-12T20:00:00'
+                            },
+                            {
+                                title: 'Birthday Party',
+                                start: '2020-09-13T07:00:00'
+                            },
+                            {
+                                title: 'Click for Google',
+                                url: 'http://google.com/',
+                                start: '2020-09-28'
+                            }
+                        ]
+                    });
+                    calendar.render();
+
+
+                },
+
+                change: function(themeSystem) {
+                    calendar.setOption('themeSystem', themeSystem);
+                }
+
+            });
+
         });
-        calendar.render();
-      },
-
-      change: function(themeSystem) {
-        calendar.setOption('themeSystem', themeSystem);
-      }
-
-    });
-
-  });
-
-
     </script>
 @endsection

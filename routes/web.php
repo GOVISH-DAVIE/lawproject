@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalenderController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RecordsController;
@@ -22,10 +23,7 @@ Route::get('/', function () {
     // return view('welcome');
     return response()->redirectTo('/home');
 });
-Route::get('/calender/{id}', function () {
-    // return view('welcome');
-    return view('calender.index');
-});
+Route::resource('calender', CalenderController::class);
 
 Auth::routes();
 Route::resource('records', RecordsController::class)->middleware('auth');

@@ -1,4 +1,5 @@
 require('./bootstrap');
+const $ = require( "jquery" )( window );
 
 // var Calendar = require('tui-calendar'); 
 // var templates = {

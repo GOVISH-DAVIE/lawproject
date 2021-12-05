@@ -1,7 +1,7 @@
 
 function initThemeChooser(settings) {
   var isInitialized = false;
-  var currentThemeSystem; // don't set this directly. use setThemeSystem
+  var currentThemeSystem ='standard'; // don't set this directly. use setThemeSystem
   var currentStylesheetEl;
   var loadingEl = document.getElementById('loading');
   var systemSelectEl = document.querySelector('#theme-system-selector select');
@@ -92,10 +92,11 @@ function initThemeChooser(settings) {
   function generateStylesheetUrl(themeSystem, themeName) {
     if (themeSystem === 'bootstrap') {
       if (themeName) {
-        return 'https://bootswatch.com/4/' + themeName + '/bootstrap.min.css';
+        return 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
       }
       else { // the default bootstrap theme
-        return 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+        return 'https://bootswatch.com/4/' + themeName + '/bootstrap.min.css';
+    
       }
     }
   }

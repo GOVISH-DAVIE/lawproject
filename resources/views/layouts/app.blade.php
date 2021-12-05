@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-{{-- <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>  --}}
+
+    {{-- <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'> --}}
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -18,13 +19,15 @@
     <script src="{{ asset('js/theme-chooser.js') }}" defer></script>
 
     <!-- Fonts -->
+    <link rel='stylesheet' type='text/css'
+        href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.min.css' />
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
- 
+
 </head>
 
 <body>
@@ -58,8 +61,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/payment">{{ __('Payments') }}</a>
                         </li>
-                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
-                            <i class="fa fa-plus" aria-hidden="true"></i>  new Record
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#exampleModal">
+                            <i class="fa fa-plus" aria-hidden="true"></i> new Record
                         </button>
                         <!-- Authentication Links -->
                         @guest
@@ -84,7 +88,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -127,9 +131,9 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body"> 
+                        <div class="modal-body">
                             @include('home')
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -183,6 +187,6 @@
                 console.error(err)
             })
     }
-</script> 
+</script>
 
 </html>
