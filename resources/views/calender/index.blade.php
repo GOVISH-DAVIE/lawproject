@@ -3,11 +3,11 @@
 @section('content')
 
     <div class="container">
-        <div id='top'> 
+        <div id='top'>
             <div class='left'>
 
                 <div id='theme-system-selector' class='selector'>
-                     
+
                     <select hidden>
 
                         <option value='bootstrap' selected>Bootstrap 4</option>
@@ -17,7 +17,7 @@
                 </div>
 
                 <div data-theme-system="bootstrap" class='selector' style='display:none'>
-                
+
 
                     <select hidden>
                         <option value='' selected>Default</option>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="container">
-          <div id='calendar'></div>
+            <div id='calendar'></div>
         </div>
     </div>
     {{-- <buttonsdar"></div> --}}
@@ -89,25 +89,21 @@
                             center: 'title',
                             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                         },
-                        initialDate: '2020-09-12',
+                        initialDate: Date.now(),
                         weekNumbers: true,
                         navLinks: true, // can click day/week names to navigate views
-                        editable: true,
+                        editable: false,
                         selectable: true,
+                        eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
+                          console.log(event, dayDelta, minuteDelta, allDay, revertFunc);
+
+                        },
                         eventClick: function(arg) {
                             if (confirm('Are you sure you want to delete this event?')) {
                                 arg.event.remove()
                             }
                         },
-                        eventRender: function(event, element) {
-                            element.popover({
-                                animation: true,
-                                delay: 300,
-                                content: '<b>Inicio</b>:' + event.start +
-                                    "<b>Fin</b>:" + event.end,
-                                trigger: 'hover'
-                            });
-                        },
+
                         select: async function(arg) {
                             var title = prompt('Event Title:');
                             if (title) {
@@ -149,7 +145,7 @@
                         nowIndicator: true,
                         dayMaxEvents: true, // allow "more" link when too many events
                         // showNonCurrentDates: false,
-                        events:{!!$event!!}
+                        events: {!! $event !!}
                     });
                     calendar.render();
 

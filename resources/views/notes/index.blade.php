@@ -26,13 +26,13 @@
                             <div class="col-md-4">
                                 <a href="/notes/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
                                         class="fa fa-edit" aria-hidden="true"></i> notes</a>
-                                        <br>
-                                        <br>
-                                        <a href="/calender/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
-                                            class="fa fa-calendar" aria-hidden="true"></i> Court Appearance </a>
-                               
+                                <br>
+                                <br>
+                                <a href="/calender/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
+                                        class="fa fa-calendar" aria-hidden="true"></i> Schedule </a>
+
                             </div>
-                            
+
                         </div>
 
                         <hr>
@@ -72,30 +72,33 @@
                         <li class="list-group-item       bg-main" aria-current="true">Notes History</li>
 
                         @foreach ($record->notes as $item)
-                            <li class="list-group-item"> 
-                               <p> {{ $item->text }}</p> 
-                    <div class="container">
-                        @foreach (json_decode($item->files) as $file) 
-                        <a href="/storage/{{ $file }}" class=" mb-200 btn btn-lg btn-outline-warning text-dark" target="_blank"
-                        class="card-link"><i class="fa fa-download fa-2x"></i>{{ $file }}</a>
-             
-                    @endforeach
-                    </div>
-                               <br><br>
-                                @if ($item->istexted=='on' )
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" checked class="custom-control-input" disabled id="customSwitch2">
-                                    <label class="custom-control-label" for="customSwitch2">SMS sent to Client</label>
-                                  </div> 
-                                    
+                            <li class="list-group-item">
+                                <p> {{ $item->text }}</p>
+                                <div class="container">
+                                    @foreach (json_decode($item->files) as $file)
+                                        <a href="/storage/{{ $file }}"
+                                            class=" mb-200 btn btn-lg btn-outline-warning text-dark" target="_blank"
+                                            class="card-link"><i
+                                                class="fa fa-download fa-2x"></i>{{ $file }}</a>
+
+                                    @endforeach
+                                </div>
+                                <br><br>
+                                @if ($item->istexted == 'on')
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" checked class="custom-control-input" disabled
+                                            id="customSwitch2">
+                                        <label class="custom-control-label" for="customSwitch2">SMS sent to Client</label>
+                                    </div>
+
                                 @endif
-                                  <br>
+                                <br>
                                 <h6 class="card-subtitle mb-2 text-muted">Created on: {{ $item->created_at }}</h6>
 
                             </li>
                         @endforeach
 
-                       
+
 
                     </ul>
                 </div>
@@ -118,17 +121,15 @@
                 </div>
                 <div class="card alert bg-body shadow  " style="margin-top: 20px">
                     <div class="card-body">
-                        <p> <b>Receivable:</b> {{ $record->amount }}</p>
-                        <p> <b>Paid:</b> {{ $record->payments->sum('amount') }}</p>
-                        <p> <b>balance:</b> {{ intval($record->amount) - intval($record->payments->sum('amount')) }}</p>
                         <form action="/payment" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label"> Charges(KES) </label>
-                                <input type="number" class="form-control" id="exampleFormControlInput1" name="amount">
+                                <label for="exampleFormControlInput1" class="form-label"> Your Message </label>
+                                <textarea class="form-control" name="amount"></textarea>
                             </div>
                             <input hidden type="text" name="record" id="" value="{{ $record->id }}">
-                            <button type="submit" class="btn btn btn-outline-secondary btn-lg">Submit</button>
+                            <button type="submit" class="btn btn btn-outline-secondary btn-lg">Send <i
+                                    class="fa fa-paper-plane" aria-hidden="true"></i></button>
                         </form>
                     </div>
                 </div>
