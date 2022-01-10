@@ -29,7 +29,7 @@
                                 <br>
                                 <br>
                                 <a href="/calender/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
-                                        class="fa fa-calendar" aria-hidden="true"></i> Schedule </a>
+                                        class="fa fa-calendar" aria-hidden="true"></i> My Calender </a>
 
                             </div>
 
@@ -75,13 +75,18 @@
                             <li class="list-group-item">
                                 <p> {{ $item->text }}</p>
                                 <div class="container">
+                                    @if ($item->file != null)
+                                        
                                     @foreach (json_decode($item->files) as $file)
-                                        <a href="/storage/{{ $file }}"
-                                            class=" mb-200 btn btn-lg btn-outline-warning text-dark" target="_blank"
-                                            class="card-link"><i
-                                                class="fa fa-download fa-2x"></i>{{ $file }}</a>
+                                    <a href="/storage/{{ $file }}"
+                                        class=" mb-200 btn btn-lg btn-outline-warning text-dark" target="_blank"
+                                        class="card-link"><i
+                                            class="fa fa-download fa-2x"></i>{{ $file }}</a>
 
-                                    @endforeach
+                                @endforeach
+                                        
+                                    @endif
+                
                                 </div>
                                 <br><br>
                                 @if ($item->istexted == 'on')

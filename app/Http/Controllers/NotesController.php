@@ -77,7 +77,7 @@ class NotesController extends Controller
         if (isset($_FILES['files'])) {
             if ($_FILES['files']['error'][0] > 0) {
                 # code...
-                return $_FILES['files']['error'];
+                return null;
             } else {
                 foreach ($_FILES['files']['name'] as $file => $value) {
                     $filename =  $_FILES['files']['name'][$file] . time() . '.' . pathinfo($_FILES["files"]["name"][$file], PATHINFO_EXTENSION);
@@ -103,12 +103,12 @@ class NotesController extends Controller
     public function update(Request $request, $id)
     {
 
-        $notes = Notes::create([
-            'files' => $this->uploadImages(),
-            'istexted' => $request->sms == null ? 'off' : $request->sms,
-            'records_id' => intval($id),
-            'text' => $request->notes,
-        ]);
+        $notes = new Notes(); 
+        $notes->files = $this->uploadImages();
+        $notes->records_id = intval($id);
+        $notes->text = $request->notes;
+        $notes->istexted = $request->sms == null ? 'off' : $request->sms;
+        $notes->save(); 
         return redirect()->back()->with(['success' => 'Created Succesfully']);
     }
 
