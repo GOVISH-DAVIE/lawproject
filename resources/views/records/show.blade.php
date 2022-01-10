@@ -27,7 +27,7 @@
                                 <a href="/notes/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
                                         class="fa fa-edit" aria-hidden="true"></i>notes</a>
                                 <br> <br> <a href="/calender/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
-                                        class="fa fa-calendar" aria-hidden="true"></i> Court Appearance </a>
+                                        class="fa fa-calendar" aria-hidden="true"></i> My Calender </a>
 
                             </div>
                         </div>

@@ -16,6 +16,8 @@ class CalenderController extends Controller
     public function index()
     {
         //
+        $calender = Calender::where('user', Auth::user()->id)->get();
+        return view('calender.index')->with('event', $calender);
     }
 
     /**

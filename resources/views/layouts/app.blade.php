@@ -61,6 +61,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/payment">{{ __('Payments') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/calender">{{ __('My Calender') }}</a>
+                        </li>
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal"
                             data-target="#exampleModal">
                             <i class="fa fa-plus" aria-hidden="true"></i> new Record
