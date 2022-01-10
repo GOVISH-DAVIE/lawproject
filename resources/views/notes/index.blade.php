@@ -24,7 +24,7 @@
                                 <br>
                             </div>
                             <div class="col-md-4">
-                                <a href="/notes/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
+                                <a href="/records/{{ $record->id }}" class="btn btn-lg btn-outline-dark"><i
                                         class="fa fa-edit" aria-hidden="true"></i> notes</a>
                                 <br>
                                 <br>

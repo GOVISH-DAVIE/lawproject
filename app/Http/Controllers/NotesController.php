@@ -103,13 +103,28 @@ class NotesController extends Controller
     public function update(Request $request, $id)
     {
 
-        $notes = new Notes(); 
-        $notes->files = $this->uploadImages();
-        $notes->records_id = intval($id);
-        $notes->text = $request->notes;
-        $notes->istexted = $request->sms == null ? 'off' : $request->sms;
-        $notes->save(); 
-        return redirect()->back()->with(['success' => 'Created Succesfully']);
+        // return $_POST;
+        if ($request->sms) {
+            # code...   
+            $S = new  SMSController();
+            $S->sendSMS(Records::find($id)->tel,  $request->notes);
+            $notes = new Notes();
+            $notes->files = $this->uploadImages();
+            $notes->records_id = intval($id);
+            $notes->text = $request->notes;
+            $notes->istexted = $request->sms == null ? 'off' : $request->sms;
+            $notes->save();
+            return redirect()->back()->with(['success' => 'Note Created Succesfully']);
+        } else {
+            # code...
+            $notes = new Notes();
+            $notes->files = $this->uploadImages();
+            $notes->records_id = intval($id);
+            $notes->text = $request->notes;
+            $notes->istexted = $request->sms == null ? 'off' : $request->sms;
+            $notes->save();
+            return redirect()->back()->with(['success' => 'Created Succesfully']);
+        }
     }
 
     /**
